@@ -17,7 +17,8 @@ RUN apt-get update --yes && apt-get install --no-install-recommends --yes \
   curl \
   libhdf5-cpp-100 \ 
   libarmadillo7 \
-  libarmadillo-dev
+  libarmadillo-dev \
+  libxml2-dev
 
 RUN \
   R -e 'chooseCRANmirror(ind=52); install.packages(c("devtools", "Rcpp","RcppArmadillo", "Matrix", "mgcv", "abind","igraph","h5","Rtsne","cluster","data.table"))'
