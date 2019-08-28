@@ -1,7 +1,7 @@
 FROM rocker/rstudio:3.4
 MAINTAINER Peter Kharchenko "peter_kharchenko@hms.harvard.edu"
 
-RUN apt-get update --yes && apt-get install --no-install-recommends --yes \
+RUN sudo apt-get update --yes && sudo apt-get install --no-install-recommends --yes \
   build-essential \
   cmake \
   git \
@@ -15,7 +15,7 @@ RUN apt-get update --yes && apt-get install --no-install-recommends --yes \
   libcurl4-openssl-dev \
   libz-dev \
   curl \
-  libhdf5-cpp-100 \ 
+  libhdf5-cpp-100 \
   libarmadillo7 \
   libarmadillo-dev \
   libxml2-dev
@@ -26,11 +26,7 @@ RUN \
 RUN \
   R -e 'source("https://bioconductor.org/biocLite.R"); biocLite(c("pcaMethods","edgeR","Rsamtools","GenomicAlignments","GenomeInfoDb","Biostrings"),suppressAutoUpdate=TRUE,ask=FALSE,suppressUpdates=TRUE)'
 
-
-RUN useradd -m user
-USER user
-ENTRYPOINT ["/bin/bash"]
-WORKDIR "/home/user"
+WORKDIR "/home/rstudio"
 
 RUN \
   git clone https://github.com/velocyto-team/velocyto.R && \
