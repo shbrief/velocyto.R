@@ -1,4 +1,4 @@
-FROM rocker/r-ver:3.4
+FROM rocker/rstudio:3.4
 MAINTAINER Peter Kharchenko "peter_kharchenko@hms.harvard.edu"
 
 RUN apt-get update --yes && apt-get install --no-install-recommends --yes \
