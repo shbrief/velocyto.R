@@ -33,9 +33,9 @@ RUN \
   mkdir -p ~/R/x86_64-redhat-linux-gnu-library/3.4
 
 RUN \
-  echo '.libPaths(c("~/R/x86_64-redhat-linux-gnu-library/3.4", .libPaths()))' > .Rprofile && \
-  R -e 'devtools::install_local("~/velocyto.R/",dep=T,upgrade_dependencies=F)'
-
+  echo '.libPaths(c("~/R/x86_64-redhat-linux-gnu-library/3.4", .libPaths()))' > .Rprofile
+  R -e 'devtools::install_local("/home/rstudio/velocyto.R/",dep=T,upgrade_dependencies=F)'
+  R -e 'devtools::install_github("hms-dbmi/pagoda2")'
 
 ENV  LD_LIBRARY_PATH=/usr/local/lib/R/lib/:$LD_LIBRARY_PATH \
   R_PROFILE=~/.Rprofile
